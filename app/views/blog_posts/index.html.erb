@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Blogging About The End of the World</h1>
+
+<%= link_to 'New Blog post', new_blog_post_path, class: "btn btn-info", id: "ugly-button" %>
+
+<br>
+  <div class="row">
+    <% @blog_posts.each do |blog_post| %>
+      <div class="col-md-4">
+        <div class="well">
+        <h3><%= blog_post.title %></h3>
+        <p><em>by: <%= blog_post.user.username %></em></p>
+        <p><%= blog_post.blog_entry[0..50] %><%= link_to '...', blog_post %></p>
+        <%= link_to 'Get Closer', blog_post, class: "btn btn-primary" %>
+        <%= link_to 'Zombify', edit_blog_post_path(blog_post), class: "btn btn-warning" %>
+        <%= link_to 'Destroy', blog_post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+<br>
+
