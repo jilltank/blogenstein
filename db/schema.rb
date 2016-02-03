@@ -11,15 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160202160212) do
+ActiveRecord::Schema.define(version: 20160202235754) do
 
   create_table "blog_posts", force: :cascade do |t|
     t.string   "title"
     t.string   "author"
     t.text     "blog_entry"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "user_id"
+    t.string   "theme_file_name"
+    t.string   "theme_content_type"
+    t.integer  "theme_file_size"
+    t.datetime "theme_updated_at"
   end
 
   create_table "comments", force: :cascade do |t|

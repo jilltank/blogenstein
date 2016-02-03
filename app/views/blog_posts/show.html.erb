@@ -5,9 +5,17 @@
 	<h2><%= @blog_post.title %></h2>
 	<em>by: <%= @blog_post.user.username %></em>
 
-<p>
-  <%= @blog_post.blog_entry %>
-</p>
+<hr>
+
+<div class="row" id="entry">
+		<% if @blog_post.theme_file_name != nil %>
+			<div class="col-md-3">
+			<%= image_tag @blog_post.theme.url(:medium), class: "img-responsive" %>
+		</div>
+		<% end %>
+  	<%= @blog_post.blog_entry %>
+</div>
+<br>
 
 <%= link_to 'Edit', edit_blog_post_path(@blog_post) %> |
 <%= link_to 'Back', blog_posts_path %>
@@ -16,9 +24,10 @@
 
 <%= render 'comments/form' %>
 
+<hr>
 
 <% @blog_post.comments.each do |c| %>
-	<p><%= c.user.username %> said...</p>
+	<h6><%= c.user.username %> said...</h6>
 	<p><%= c.comment_entry %></p>
 	<small><%= c.created_at.strftime("%m/%d/%Y at %I:%M%p") %></small>
 <% end %>
